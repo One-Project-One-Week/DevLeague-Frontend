@@ -1,7 +1,11 @@
 {
+  // Removed due to loading issues
+  "$schema": "./schemas/jsconfig.schema.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/lib/*": ["lib/*"],
+      "@/components/*": ["components/*"]
     }
   }
 }
