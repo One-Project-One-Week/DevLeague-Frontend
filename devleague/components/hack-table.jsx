@@ -9,15 +9,9 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown } from "lucide-react"
+import { ArrowUpDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import {
   Table,
@@ -29,7 +23,7 @@ import {
 } from "@/components/ui/table"
 import Link from "next/link"
 
-const data = [
+export const data = [
   { id: "1", name: "One Project One Week", status: "upcoming" },
   { id: "2", name: "GreenTech", status: "ongoing" },
   { id: "3", name: "Buildathon", status: "completed" },
@@ -44,7 +38,7 @@ export const columns = [
       const hackathon = row.original
       return (
         <Link
-          href={`/hackathons/${hackathon.id}`}
+          href={`/admin/dashboard/hackathon/${hackathon.id}`}
           className="text-green-600 hover:underline"
         >
           {hackathon.name}
