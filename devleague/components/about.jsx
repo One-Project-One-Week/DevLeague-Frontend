@@ -12,7 +12,7 @@ export default function About() {
                 transition={{ duration: 0.5 }}
                 className='my-20'
             >
-                <h1 className='text-center text-4xl tracking-tight'>About Us</h1>
+                <h1 className='text-center text-4xl text-neutral-300 tracking-tight'>About Us</h1>
                 <p className="mt-4 text-neutral-400  max-w-xl mx-auto">
                     We are a passionate team of developers and designers dedicated to creating innovative solutions that make a difference. Our mission is to empower individuals and organizations through technology, providing them with the tools they need to succeed in a rapidly changing digital landscape. With a focus on collaboration, creativity, and excellence, we strive to deliver exceptional results that exceed expectations.
                 </p>

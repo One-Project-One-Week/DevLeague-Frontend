@@ -28,7 +28,11 @@ export default function HeroSection() {
             ">
                 <motion.h1
                     variants={fadeInUp}
-                    className="text-5xl lg:text-8xl my-4 font-semibold tracking-tighter bg-gradient-to-l dark:from-neutral-50 dark:via-neutral-300 dark:to-neutral-700 from-neutral-800 via-neutral-300 to-neutral-400 bg-clip-text text-transparent">
+                    className="text-5xl lg:text-8xl my-4 font-semibold tracking-tighter bg-gradient-to-bl
+from-neutral-300
+via-neutral-400
+to-green-500  bg-clip-text text-transparent">
+                    {/* bg-gradient-to-b  from-neutral-300 via-neutral-400 to-neutral-500 */}
                     <span >
                         Dev League <br />
                         Code Compete Conquer

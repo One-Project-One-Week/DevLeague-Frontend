@@ -26,15 +26,15 @@ export default function Navbar() {
                 </Link>
                 {/* hidden on mobile */}
                 <div className="hidden md:flex space-x-6">
-                    <a href="#hackathon" className='hover:text-neutral-200'>
+                    <Link href="/" className='hover:text-neutral-200'>
+                        Home
+                    </Link>
+                    <Link href="/hackathon" className='hover:text-neutral-200'>
                         Hackathon
-                    </a>
-                    <a href="#leaderboard" className='hover:text-neutral-200'>
+                    </Link>
+                    <Link href="/leaderboard" className='hover:text-neutral-200'>
                         Leaderboard
-                    </a>
-                    <a href="#about" className='hover:text-neutral-200'>
-                        About
-                    </a>
+                    </Link>
                 </div>
                 {/* Right: buttons (hidden on mobile) */}
                 <div className="hidden md:flex space-x-4 items-center">
