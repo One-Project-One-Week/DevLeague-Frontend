@@ -24,7 +24,7 @@ export default function HackathonList() {
                     initial={{ opacity: 0, y: -100 }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-12 ">
-                    <h2 className="text-3xl lg:text-5xl mt-20 tracking-tighter bg-gradient-to-t dark:from-neutral-50 dark:via-neutral-300 dark:to-neutral-700 from-neutral-800 via-neutral-300 to-neutral-400 bg-clip-text text-transparent">
+                    <h2 className="text-3xl lg:text-5xl mt-20 tracking-tighter bg-gradient-to-t  from-neutral-00 via-neutral-300 to-neutral-400 bg-clip-text text-transparent">
                         Hackathon Events
                     </h2>
                     <p className="mt-4 text-neutral-400 max-w-xl mx-auto">
@@ -49,7 +49,7 @@ export default function HackathonList() {
                             variants={stepVarients}
                             key={index} className="bg-neutral-500/10 backdrop-blur-md p-6 rounded-xl shadow-lg flex flex-col justify-between">
                             <div>
-                                <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
+                                <h3 className="text-xl text-neutral-300 font-semibold mb-4">{step.title}</h3>
                                 <p className="text-neutral-400 mb-4 text-[14px]">{step.description}</p>
                             </div>
                             <div className="flex justify-center">
