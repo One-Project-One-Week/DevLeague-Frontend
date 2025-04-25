@@ -1,6 +1,6 @@
-'use client';
+"use client"
 
-import * as React from 'react';
+import * as React from "react"
 import {
   flexRender,
   getCoreRowModel,
@@ -8,11 +8,11 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from '@tanstack/react-table';
-import { ArrowUpDown } from 'lucide-react';
+} from "@tanstack/react-table"
+import { ArrowUpDown } from "lucide-react"
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import {
   Table,
   TableBody,
@@ -20,9 +20,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import Link from 'next/link';
-import { adminApi } from '@/lib/axios';
+} from "@/components/ui/table"
+import Link from "next/link"
+import { adminApi } from "@/lib/axios"
 
 // const data = [
 //   { id: '1', name: 'One Project One Week', status: 'upcoming' },
@@ -33,61 +33,61 @@ import { adminApi } from '@/lib/axios';
 
 export const columns = [
   {
-    accessorKey: 'name',
-    header: 'Hackathon Name',
+    accessorKey: "name",
+    header: "Hackathon Name",
     cell: ({ row }) => {
-      const hackathon = row.original;
+      const hackathon = row.original
       return (
         <Link
-          href={`/admin/hackathon/${hackathon.id}`}
+          href={`/admin/dashboard/hackathon/${hackathon.id}`}
           className="text-green-600 hover:underline"
         >
           {hackathon.name}
         </Link>
-      );
+      )
     },
   },
   {
-    accessorKey: 'status',
+    accessorKey: "status",
     header: ({ column }) => (
       <Button
         variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
         Status
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue('status')}</div>
+      <div className="capitalize">{row.getValue("status")}</div>
     ),
   },
-];
+]
 
 export function HackathonListTable() {
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState([])
   React.useEffect(() => {
-    adminApi.get('/admin/hackathons').then((data) =>
+    adminApi.get("/admin/hackathons").then((data) =>
       setData(
         data.data.data.map((hack) => {
-          let status = 'Finished';
-          const current = new Date();
-          const startDate = new Date(hack.start_date);
-          const endDate = new Date(hack.end_date);
+          let status = "Finished"
+          const current = new Date()
+          const startDate = new Date(hack.start_date)
+          const endDate = new Date(hack.end_date)
           if (current < startDate) {
-            status = 'Upcomming';
+            status = "Upcomming"
           } else if (current > endDate) {
-            status = 'Ongoing';
+            status = "Ongoing"
           }
-          return { id: hack.id, name: hack.name, status };
+          return { id: hack.id, name: hack.name, status }
         })
       )
-    );
-  }, []);
-  const [sorting, setSorting] = React.useState([]);
-  const [columnFilters, setColumnFilters] = React.useState([]);
-  const [columnVisibility, setColumnVisibility] = React.useState({});
-  const [rowSelection, setRowSelection] = React.useState({});
+    )
+  }, [])
+  const [sorting, setSorting] = React.useState([])
+  const [columnFilters, setColumnFilters] = React.useState([])
+  const [columnVisibility, setColumnVisibility] = React.useState({})
+  const [rowSelection, setRowSelection] = React.useState({})
   const table = useReactTable({
     data,
     columns,
@@ -105,16 +105,16 @@ export function HackathonListTable() {
       columnVisibility,
       rowSelection,
     },
-  });
+  })
 
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter hackathons..."
-          value={table.getColumn('name')?.getFilterValue() ?? ''}
+          value={table.getColumn("name")?.getFilterValue() ?? ""}
           onChange={(event) =>
-            table.getColumn('name')?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -142,7 +142,7 @@ export function HackathonListTable() {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
+                  data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -168,5 +168,5 @@ export function HackathonListTable() {
         </Table>
       </div>
     </div>
-  );
+  )
 }
