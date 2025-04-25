@@ -1,12 +1,10 @@
+import Link from "next/link"
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 
 export default function UserLogin() {
@@ -54,9 +52,9 @@ export default function UserLogin() {
                             </div>
                             <div className="text-center text-sm">
                                 Don&apos;t have an account?{" "}
-                                <a href="#" className="underline underline-offset-4">
+                                <Link href="/user/auth/register" className="underline underline-offset-4 font-bold">
                                     Sign up
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </form>
@@ -68,11 +66,6 @@ export default function UserLogin() {
                     </div>
                 </CardContent>
             </Card>
-            <div
-                className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-                By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-                and <a href="#">Privacy Policy</a>.
-            </div>
         </div>
     );
 }
