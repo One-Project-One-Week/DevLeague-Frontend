@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 'use client';
 
 import Link from 'next/link';
@@ -72,61 +71,3 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
-=======
-"use client"
-
-import Link from "next/link"
-import { Home, Inbox } from "lucide-react"
-
-import {
-    Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarGroupLabel,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-} from "@/components/ui/sidebar"
-
-const items = [
-    {
-        title: "Hackathon Create",
-        url: "/admin/dashboard/create",
-        icon: Home,
-    },
-    {
-        title: "Hackathon List",
-        url: "/admin/dashboard/hackathon",
-        icon: Inbox,
-    },
-]
-
-export function AppSidebar() {
-    return (
-        <Sidebar>
-            <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Admin Panel</SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenu>
-                            {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
-                                        <Link href={item.url}>
-                                            <div className="flex items-center gap-2">
-                                                <item.icon className="w-5 h-5" />
-                                                <span>{item.title}</span>
-                                            </div>
-                                        </Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
-            </SidebarContent>
-        </Sidebar>
-    )
-}
->>>>>>> landing-page
