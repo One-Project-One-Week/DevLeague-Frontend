@@ -11,6 +11,11 @@ adminApi.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // Skip refresh token logic for login endpoint
+    if (originalRequest.url.includes('/admin/login')) {
+      return Promise.reject(error);
+    }
+
     if (
       error.response?.status === 401 &&
       error.response?.data?.message === 'Access Token Not Found'
@@ -23,16 +28,13 @@ adminApi.interceptors.response.use(
           }
         );
         if (refreshResponse.status === 200) {
-          return api(originalRequest);
+          return adminApi(originalRequest);
         }
       } catch (refreshError) {
         if (
           refreshError.response?.status === 404 &&
           refreshError.response?.data?.message === 'refresh not found'
         ) {
-          // Handle refresh token not found scenario
-          // You might want to redirect to login or clear user session
-          // window.location.href = '/admin';
           return Promise.reject(refreshError);
         }
       }
