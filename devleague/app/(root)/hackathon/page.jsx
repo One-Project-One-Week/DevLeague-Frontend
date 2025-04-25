@@ -23,7 +23,7 @@ export default function HackathonPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     initial={{ opacity: 0, y: -100 }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-12 mt-10">
+                    className="text-center mb-10 mt-10">
                     <h2 className="text-3xl lg:text-5xl mt-20 mb-10 tracking-tighter bg-gradient-to-t  from-neutral-00 via-neutral-300 to-neutral-400 bg-clip-text text-transparent">
                         Hackathon Events
                     </h2>
@@ -39,19 +39,19 @@ export default function HackathonPage() {
                             }
                         }
                     }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
                     <motion.div
                         custom={0}
                         variants={stepVarients}
-                        className="bg-neutral-500/10 backdrop-blur-md p-6 rounded-xl shadow-lg flex flex-col justify-between relative">
+                        className="bg-neutral-500/10 backdrop-blur-md p-6 rounded-xl shadow-lg flex flex-col gap-3 relative">
                         <div className="absolute top-0 right-0 mt-10 mr-10">
                             <Badge variant="outline" className="text-sm text-neutral-300 border border-green-400">Upcoming</Badge>
                         </div>
                         <div
                             className="">
-                            <img src="/img1.jpg" alt="img1" className='rounded-lg' />
+                            <img src="/img1.jpg" alt="img1" className='rounded-lg w-full h-52 object-cover' />
                         </div>
-                        <div className="flex flex-col justify-center mt-5">
+                        <div className="flex flex-col justify-center ">
                             <h3 className="text-xl text-neutral-300 font-semibold mb-4">Hackthon Title</h3>
                             <p className="text-neutral-400 mb-4 text-[14px]">Hackathon Description</p>
                             <div className="flex flex-row items-center mb-4">
@@ -72,21 +72,22 @@ export default function HackathonPage() {
                                 <Badge variant="secondary">Maching learning</Badge>
                                 <Badge variant="secondary">Robotic</Badge>
                             </div>
-                            <Link href="/home/hackathon/detail" className="mt-5 text-neutral-300 text-sm font-semibold bg-neutral-500/20 hover:bg-neutral-400 px-4 py-2 rounded-md text-center">View Details</Link>
+                            <Link href="/hackathon/detail" className="mt-5 text-neutral-300 text-sm font-semibold bg-neutral-500/20 hover:bg-neutral-400 px-4 py-2 rounded-md text-center">View Details</Link>
                         </div>
                     </motion.div>
                     {/*  */}
                     <motion.div
                         custom={0}
                         variants={stepVarients}
-                        className="bg-neutral-500/10 backdrop-blur-md p-6 rounded-xl shadow-lg flex flex-col justify-between relative">
+                        className="bg-neutral-500/10 backdrop-blur-md p-6 rounded-xl shadow-lg flex flex-col gap-3 relative">
                         <div className="absolute top-0 right-0 mt-10 mr-10">
-                            <Badge variant="outline" className="text-sm text-neutral-300 border border-green-400">Soon</Badge>
+                            <Badge variant="outline" className="text-sm text-neutral-300 border border-green-400">Upcoming</Badge>
                         </div>
-                        <div className="">
-                            <img src="/img1.jpg" alt="img1" className='rounded-lg' />
+                        <div
+                            className="">
+                            <img src="/img1.jpg" alt="img1" className='rounded-lg w-full h-52 object-cover' />
                         </div>
-                        <div className="flex flex-col justify-center mt-5">
+                        <div className="flex flex-col justify-center ">
                             <h3 className="text-xl text-neutral-300 font-semibold mb-4">Hackthon Title</h3>
                             <p className="text-neutral-400 mb-4 text-[14px]">Hackathon Description</p>
                             <div className="flex flex-row items-center mb-4">
@@ -107,21 +108,22 @@ export default function HackathonPage() {
                                 <Badge variant="secondary">Maching learning</Badge>
                                 <Badge variant="secondary">Robotic</Badge>
                             </div>
-                            <Link href="/home/hackathon/detail" className="mt-5 text-neutral-300 text-sm font-semibold bg-neutral-500/20 hover:bg-neutral-400 px-4 py-2 rounded-md text-center">View Details</Link>
+                            <Link href="/hackathon/detail" className="mt-5 text-neutral-300 text-sm font-semibold bg-neutral-500/20 hover:bg-neutral-400 px-4 py-2 rounded-md text-center">View Details</Link>
                         </div>
                     </motion.div>
                     {/*  */}
                     <motion.div
                         custom={0}
                         variants={stepVarients}
-                        className="bg-neutral-500/10 backdrop-blur-md p-6 rounded-xl shadow-lg flex flex-col justify-between relative">
+                        className="bg-neutral-500/10 backdrop-blur-md p-6 rounded-xl shadow-lg flex flex-col gap-3 relative">
                         <div className="absolute top-0 right-0 mt-10 mr-10">
-                            <Badge variant="outline" className="text-sm text-neutral-300 border border-green-400">Register</Badge>
+                            <Badge variant="outline" className="text-sm text-neutral-300 border border-green-400">Upcoming</Badge>
                         </div>
-                        <div className="">
-                            <img src="/img1.jpg" alt="img1" className='rounded-lg' />
+                        <div
+                            className="">
+                            <img src="/img1.jpg" alt="img1" className='rounded-lg w-full h-52 object-cover' />
                         </div>
-                        <div className="flex flex-col justify-center mt-5">
+                        <div className="flex flex-col justify-center ">
                             <h3 className="text-xl text-neutral-300 font-semibold mb-4">Hackthon Title</h3>
                             <p className="text-neutral-400 mb-4 text-[14px]">Hackathon Description</p>
                             <div className="flex flex-row items-center mb-4">
@@ -142,7 +144,7 @@ export default function HackathonPage() {
                                 <Badge variant="secondary">Maching learning</Badge>
                                 <Badge variant="secondary">Robotic</Badge>
                             </div>
-                            <Link href="/home/hackathon/detail" className="mt-5 text-neutral-300 text-sm font-semibold bg-neutral-500/20 hover:bg-neutral-400 px-4 py-2 rounded-md text-center">View Details</Link>
+                            <Link href="/hackathon/detail" className="mt-5 text-neutral-300 text-sm font-semibold bg-neutral-500/20 hover:bg-neutral-400 px-4 py-2 rounded-md text-center">View Details</Link>
                         </div>
                     </motion.div>
                 </motion.div>

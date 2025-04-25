@@ -29,13 +29,12 @@ export default function Navbar() {
                     <Link href="/" className='hover:text-neutral-200'>
                         Home
                     </Link>
-                    <Link href="/home/hackathon" className='hover:text-neutral-200'>
+                    <Link href="/hackathon" className='hover:text-neutral-200'>
                         Hackathon
                     </Link>
                     <Link href="/leaderboard" className='hover:text-neutral-200'>
                         Leaderboard
                     </Link>
-
                 </div>
                 {/* Right: buttons (hidden on mobile) */}
                 <div className="hidden md:flex space-x-4 items-center">
