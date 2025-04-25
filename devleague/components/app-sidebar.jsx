@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import Link from "next/link"
-import { Home, Inbox } from "lucide-react"
+import Link from 'next/link';
+import { Home, Inbox } from 'lucide-react';
 
 import {
   Sidebar,
@@ -12,23 +12,25 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { Button } from "./ui/button"
+} from '@/components/ui/sidebar';
+import { Button } from './ui/button';
+import { useAdminAuth } from '@/app/admin/contexts/AdminAuthContext';
 
 const items = [
   {
-    title: "Hackathon Create",
-    url: "/admin/dashboard/create",
+    title: 'Hackathon Create',
+    url: '/admin/dashboard/create',
     icon: Home,
   },
   {
-    title: "Hackathon List",
-    url: "/admin/dashboard/hackathon",
+    title: 'Hackathon List',
+    url: '/admin/dashboard/hackathon',
     icon: Inbox,
   },
-]
+];
 
 export function AppSidebar() {
+  const { logout } = useAdminAuth();
   return (
     <Sidebar>
       <SidebarContent>
@@ -52,9 +54,20 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <Button className="m-5" onClick={() => signOut()}>
+      <Button
+        className="m-5 cursor-pointer"
+        onClick={() => {
+          (async () => {
+            try {
+              await logout();
+            } catch (error) {
+              console.error('Logout failed:', error);
+            }
+          })();
+        }}
+      >
         Logout
       </Button>
     </Sidebar>
-  )
+  );
 }
