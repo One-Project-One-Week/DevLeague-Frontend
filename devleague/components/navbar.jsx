@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Button } from './ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { AuthProvider, useAuth } from '@/app/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
@@ -19,14 +19,11 @@ function OgNavbar({ isAuthenticated, logout }) {
   isAuthenticated = isAuthenticated || false;
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  // const { mode, setMode } = useContext(ThemeContext)
   const { user } = useAuth();
+
   const toggleMenu = () => {
     setOpen(!open);
   };
-  // const toggleMode = () => {
-  //     setMode(!mode)
-  // }
 
   // Get the user's avatar image URL with proper API prefix if it exists
   const userProfileImage = user?.profile_image
@@ -99,7 +96,7 @@ function OgNavbar({ isAuthenticated, logout }) {
                 href="/user/auth/login"
                 className="border border-neutral-700 text-white py-2 px-4 rounded-lg hover:bg-neutral-700 transition"
               >
-                login
+                Login
               </Link>
               <Link
                 href="/user/auth/register"
@@ -110,7 +107,7 @@ function OgNavbar({ isAuthenticated, logout }) {
             </>
           )}
         </div>
-        {/* Hambugar Icon for Mobile */}
+        {/* Hamburger Icon for Mobile */}
         <div className="md:hidden">
           <button
             className="text-2xl border-r border-neutral-400 mr-2 px-2"

@@ -6,13 +6,35 @@ import { motion } from 'framer-motion';
 import { Users } from 'lucide-react';
 import WinnerCard from '@/components/winner-card';
 import { useParams } from 'next/navigation';
-import { api } from '@/lib/axios';
+import { api, userApi } from '@/lib/axios';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { useAuth } from '@/app/contexts/AuthContext';
 
 export default function HackathonDetail() {
   const [show, setShow] = useState(true);
+  const [registered, setRegistered] = useState(false);
+  const [team, setTeam] = useState({});
+  const [members, setMembers] = useState([]);
   const { hack_detail } = useParams();
+  const { isAuthenticated, user } = useAuth();
   const [hackathon, setHackathon] = useState({});
   useEffect(() => {
+    isAuthenticated &&
+      userApi.get(`/hackathons/${hack_detail}/me`).then((response) => {
+        if (response.data && response.data.data) {
+          setRegistered(response.data.data.status);
+        }
+      });
+    isAuthenticated &&
+      userApi.get(`/teams/${user.team_id}`).then((response) => {
+        if (response.data && response.data.data) {
+          setTeam(response.data.data);
+        }
+      });
     api.get(`/hackathons/${hack_detail}`).then((res) => {
       let status = '';
       const current = new Date();
@@ -85,8 +107,125 @@ export default function HackathonDetail() {
               </div>
               <div className="flex flex-col justify-center mt-10 gap-3">
                 <h3 className="text-xl text-neutral-300 font-semibold mb-4">
-                  {hack_detail.name}
+                  {hackathon.name}
                 </h3>
+                {/* {isAuthenticated && (
+                  <Popover>
+                    <PopoverTrigger className="bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1">
+                      Project Submit
+                    </PopoverTrigger>
+                    <PopoverContent className="bg-neutral-600/70 flex flex-col border-none gap-5">
+                      <form
+                        className="gap-3 flex flex-col   text-neutral-300"
+                        action=""
+                      >
+                        <input
+                          className="p-2 border border-gray-500 rounded-sm"
+                          type="url"
+                          name=""
+                          placeholder="enter your repo link"
+                        />
+                        <button
+                          type="submit"
+                          className=" bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1"
+                        >
+                          Submit
+                        </button>
+                      </form>
+                    </PopoverContent>
+                  </Popover>
+                )} */}
+                {/*  */}
+                {isAuthenticated && (
+                  <>
+                    {registered ? (
+                      <div className="bg-green-500/20 text-green-300 p-3 rounded-md text-center">
+                        Registered Successfully
+                      </div>
+                    ) : (
+                      <Popover>
+                        <PopoverTrigger className="bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1">
+                          Register
+                        </PopoverTrigger>
+                        <PopoverContent className="bg-neutral-600/70 flex flex-col border-none gap-5">
+                          <form
+                            className="flex flex-col gap-3"
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              const selectedMemberIds = members.map(
+                                (member) => member.id
+                              );
+                              console.log(selectedMemberIds);
+                              userApi
+                                .post(`/hackathons/${hackathon.id}/register`, {
+                                  selectedMemberIds: selectedMemberIds,
+                                })
+                                .then((response) => {
+                                  console.log('Registration successful', response);
+                                  // You can add success notification here
+                                })
+                                .catch((error) => {
+                                  console.error('Registration failed', error);
+                                  // You can add error notification here
+                                });
+                            }}
+                          >
+                            {team && team.members ? (
+                              team.members.map((member, index) => {
+                                return (
+                                  <div
+                                    key={member.id || index}
+                                    className="flex flex-row items-center justify-between text-neutral-300"
+                                  >
+                                    <div className="flex flex-row gap-3">
+                                      <input
+                                        type="checkbox"
+                                        id={`member-${member.id}`}
+                                        value={member.id}
+                                        onChange={(e) => {
+                                          if (e.target.checked) {
+                                            setMembers([...members, member]);
+                                          } else {
+                                            setMembers(
+                                              members.filter(
+                                                (m) => m.id !== member.id
+                                              )
+                                            );
+                                          }
+                                        }}
+                                      />
+                                      <img
+                                        src={`${process.env.API}/${member.profile_image}`}
+                                        alt=""
+                                        width={40}
+                                      />
+                                    </div>
+                                    <span>{member.username}</span>
+                                    <span>{member.points}</span>
+                                  </div>
+                                );
+                              })
+                            ) : (
+                              <div className="text-neutral-300">
+                                Loading team members...
+                              </div>
+                            )}
+                            <button
+                              type="submit"
+                              className=" bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1"
+                              disabled={
+                                members.length < hackathon.min_participants ||
+                                members.length > hackathon.max_participants
+                              }
+                            >
+                              Submit
+                            </button>
+                          </form>
+                        </PopoverContent>
+                      </Popover>
+                    )}
+                  </>
+                )}
 
                 <div className="flex gap-3">
                   <Users className="text-green-400" />
@@ -279,11 +418,11 @@ export default function HackathonDetail() {
                   )}
                   <p>{hackathon.prize}</p>
                 </div>
-                {show && (
+                {/* {show && (
                   <>
                     <WinnerCard />
                   </>
-                )}
+                )} */}
               </div>
             </motion.div>
           </motion.div>

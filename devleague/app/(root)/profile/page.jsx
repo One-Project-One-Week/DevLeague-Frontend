@@ -1,60 +1,61 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from 'framer-motion';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useAuth } from '@/app/contexts/AuthContext';
 
 const profile = {
-  username: "dev_master",
-  email: "dev@example.com",
+  username: 'dev_master',
+  email: 'dev@example.com',
   points: 2450,
-  image: "/profile.jpg", // change to real image path
-}
+  image: '/profile.jpg', // change to real image path
+};
 
 const hackathons = {
   ongoing: [
     {
-      name: "AI Showdown 2025",
-      startDatetime: "April 24, 2025 10:00 AM",
-      endDatetime: "April 26, 2025 6:00 PM",
+      name: 'AI Showdown 2025',
+      startDatetime: 'April 24, 2025 10:00 AM',
+      endDatetime: 'April 26, 2025 6:00 PM',
     },
   ],
   upcoming: [
     {
-      name: "Blockchain Bonanza",
-      startDatetime: "May 5, 2025 9:00 AM",
-      endDatetime: "May 5, 2025 5:00 PM",
+      name: 'Blockchain Bonanza',
+      startDatetime: 'May 5, 2025 9:00 AM',
+      endDatetime: 'May 5, 2025 5:00 PM',
     },
     {
-      name: "Frontend Fiesta",
-      startDatetime: "May 20, 2025 2:00 PM",
-      endDatetime: "May 20, 2025 6:00 PM",
+      name: 'Frontend Fiesta',
+      startDatetime: 'May 20, 2025 2:00 PM',
+      endDatetime: 'May 20, 2025 6:00 PM',
     },
   ],
   completed: [
     {
-      name: "Code Clash 2024",
-      team: "Team Alpha",
+      name: 'Code Clash 2024',
+      team: 'Team Alpha',
       rank: 1,
-      endDate: "March 20, 2024",
-      image: "/codeclash.jpg",
+      endDate: 'March 20, 2024',
+      image: '/codeclash.jpg',
     },
     {
-      name: "HackXperience",
-      team: "Team Beta",
+      name: 'HackXperience',
+      team: 'Team Beta',
       rank: 2,
-      endDate: "April 10, 2024",
-      image: "/hackxperience.jpg",
+      endDate: 'April 10, 2024',
+      image: '/hackxperience.jpg',
     },
     {
-      name: "DevSprint",
-      team: "Code Ninjas",
+      name: 'DevSprint',
+      team: 'Code Ninjas',
       rank: null,
-      endDate: "February 5, 2024",
-      image: "/devsprint.jpg",
+      endDate: 'February 5, 2024',
+      image: '/devsprint.jpg',
     },
   ],
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -64,12 +65,13 @@ const itemVariants = {
     transition: {
       delay: i * 0.2,
       duration: 0.5,
-      ease: "easeOut",
+      ease: 'easeOut',
     },
   }),
-}
+};
 
 export default function ProfilePage() {
+  const { user } = useAuth();
   return (
     <section className="max-w-7xl mx-auto px-4 pt-30 pb-20">
       <motion.div
@@ -99,15 +101,17 @@ export default function ProfilePage() {
               </CardHeader>
               <CardContent className="flex flex-col items-start gap-4">
                 <Avatar className="h-24 w-24">
-                  <AvatarImage src={profile.image} />
+                  <AvatarImage
+                    src={`${process.env.API}/${user.profile_image}`}
+                  />
                   <AvatarFallback>DM</AvatarFallback>
                 </Avatar>
                 <h2 className="text-xl font-semibold text-neutral-100">
-                  {profile.username}
+                  {user.username}
                 </h2>
-                <p className="text-neutral-400">{profile.email}</p>
+                <p className="text-neutral-400">{user.email}</p>
                 <p className="text-neutral-300 font-medium">
-                  Points: {profile.points}
+                  Points: {user.points}
                 </p>
               </CardContent>
 
@@ -222,12 +226,12 @@ export default function ProfilePage() {
                         </div>
                         <div className="text-sm text-right text-neutral-400">
                           {event.rank === 1
-                            ? "🥇 1st Place"
+                            ? '🥇 1st Place'
                             : event.rank === 2
-                            ? "🥈 2nd Place"
+                            ? '🥈 2nd Place'
                             : event.rank === 3
-                            ? "🥉 3rd Place"
-                            : "No Rank"}
+                            ? '🥉 3rd Place'
+                            : 'No Rank'}
                         </div>
                       </Card>
                     ))}
@@ -241,5 +245,5 @@ export default function ProfilePage() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
