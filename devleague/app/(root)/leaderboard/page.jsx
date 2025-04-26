@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { api } from '@/lib/axios';
 
 const dummyData = [
   { username: 'alice_dev', points: 2300 },
@@ -35,9 +36,7 @@ const sortedData = [...dummyData].sort((a, b) => b.points - a.points);
 export default function Leaderboard({ leaderboardData = sortedData }) {
   const [leaderboard, setLeaderboard] = useState([]);
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/api/v1/leaderboard')
-      .then((res) => setLeaderboard(res.data.data));
+    api.get('/leaderboard').then((res) => setLeaderboard(res.data.data));
   }, []);
   return (
     <div className="max-w-7xl min-h-screen mx-auto px-4 flex flex-col p-20">

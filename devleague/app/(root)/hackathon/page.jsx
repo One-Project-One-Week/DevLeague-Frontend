@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { api } from '@/lib/axios';
 
 export default function HackathonPage() {
   const [hackathons, setHackathon] = useState([]);
@@ -13,7 +14,7 @@ export default function HackathonPage() {
     const fetchHackathons = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:3001/api/v1/hackathons');
+        const res = await api.get('/hackathons');
         const hackathonsData = res.data.data.map((hack) => {
           let status = '';
           const current = new Date();
@@ -116,7 +117,6 @@ export default function HackathonPage() {
                     ) : (
                       ''
                     )}
-                    ```
                     <div className="flex flex-row items-center mb-4">
                       <p className="text-neutral-400  text-[14px]">Points</p>
                       <Badge
