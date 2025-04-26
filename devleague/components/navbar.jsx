@@ -4,17 +4,40 @@ import { useState, useContext } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
-export default function Navbar({ isAuthenticated, logout }) {
+import { AuthProvider, useAuth } from '@/app/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
+
+export default function NavBar(props) {
+  return (
+    <AuthProvider>
+      <OgNavbar {...props} />
+    </AuthProvider>
+  );
+}
+
+function OgNavbar({ isAuthenticated, logout }) {
   isAuthenticated = isAuthenticated || false;
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   // const { mode, setMode } = useContext(ThemeContext)
-
+  const { user } = useAuth();
   const toggleMenu = () => {
     setOpen(!open);
   };
   // const toggleMode = () => {
   //     setMode(!mode)
   // }
+
+  // Get the user's avatar image URL with proper API prefix if it exists
+  const userProfileImage = user?.profile_image
+    ? `${process.env.API}/${user.profile_image}`
+    : null;
+
+  // Get initials from username if available
+  const userInitials = user?.username
+    ? user.username.substring(0, 2).toUpperCase()
+    : 'CN';
+
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 m-2">
       <div className="text-neutral-50 black/10 backdrop-blur-md max-w-7xl mx-auto px-4 py-3 flex justify-between items-center rounded-xl border border-neutral-800">
@@ -40,7 +63,7 @@ export default function Navbar({ isAuthenticated, logout }) {
           </Link>
           {isAuthenticated && (
             <Link
-              href="/leaderboard"
+              href="/team"
               className="text-neutral-200 hover:text-green-400"
             >
               Team
@@ -51,10 +74,15 @@ export default function Navbar({ isAuthenticated, logout }) {
         <div className="hidden md:flex space-x-4 items-center">
           {isAuthenticated ? (
             <>
-              <Avatar>
-                <AvatarImage src="/avatar.svg" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
+              <Link href={'/profile'}>
+                <Avatar>
+                  <AvatarImage
+                    src={userProfileImage}
+                    alt={user?.username || 'User'}
+                  />
+                  <AvatarFallback>{userInitials}</AvatarFallback>
+                </Avatar>
+              </Link>
               <Button
                 onClick={(e) => {
                   e.preventDefault();
@@ -84,10 +112,27 @@ export default function Navbar({ isAuthenticated, logout }) {
         </div>
         {/* Hambugar Icon for Mobile */}
         <div className="md:hidden">
-          <button className="text-2xl border-r border-neutral-400 mr-2 px-2">
+          <button
+            className="text-2xl border-r border-neutral-400 mr-2 px-2"
+            onClick={() => {
+              router.push('/profile');
+            }}
+          >
             <Avatar>
-              <AvatarImage src="/avatar.svg" />
-              <AvatarFallback>CN</AvatarFallback>
+              {isAuthenticated ? (
+                <>
+                  <AvatarImage
+                    src={userProfileImage}
+                    alt={user?.username || 'User'}
+                  />
+                  <AvatarFallback>{userInitials}</AvatarFallback>
+                </>
+              ) : (
+                <>
+                  <AvatarImage src="/avatar.svg" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </>
+              )}
             </Avatar>
           </button>
           <button

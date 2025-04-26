@@ -47,7 +47,7 @@ export default function HackathonPage() {
     visible: { opacity: 1, transition: { duration: 0.5 } },
   };
   return (
-    <section className="">
+    <section className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 flex flex-col">
         <motion.div
           whileInView={{ opacity: 1, y: 0 }}
