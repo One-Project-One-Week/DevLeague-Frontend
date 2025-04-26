@@ -10,7 +10,7 @@ import {
 export default function UserLogin() {
     return (
         <div className="w-full max-w-sm md:max-w-3xl ">
-            <Card className="overflow-hidden p-0 shadow-2xl bg-gradient-to-b from-slate-950 from-20%  to-gray-900 to-60%">
+            <Card className="overflow-hidden p-0 shadow-2xl bg-neutral-500/30 border-none" >
                 <CardContent className="grid p-0 md:grid-cols-2">
                     <form className="p-6 md:p-8">
                         <div className="flex flex-col gap-6">
@@ -35,23 +35,10 @@ export default function UserLogin() {
                                 </div>
                                 <Input id="password" className="text-sm text-neutral-200" type="password" required />
                             </div>
-                            <Button type="submit" className="w-full bg-green-500 hover:bg-white hover:text-green-500">
+                            <Button type="submit" className="w-full bg-green-600 hover:bg-neutral-200 hover:text-green-500">
                                 Login
                             </Button>
-                            <div
-                                className="relative flex items-center justify-center text-sm text-muted-foreground">
-                                <span className="text-muted-foreground relative z-10 px-2">
-                                    Or continue with
-                                </span>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <Button variant="outline" type="button" className="w-full">
-                                    <img src="/logo-github.svg" alt="" width={20} />
-                                </Button>
-                                <Button variant="outline" type="button" className="w-full">
-                                    <img src="/logo-google.svg" alt="" width={20} />
-                                </Button>
-                            </div>
+
                             <div className="text-center text-muted-foreground text-balance text-sm">
                                 Don&apos;t have an account?{" "}
                                 <Link href="/user/auth/register" className="underline underline-offset-4 text-green-500">

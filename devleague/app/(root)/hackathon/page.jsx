@@ -23,8 +23,8 @@ export default function HackathonPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     initial={{ opacity: 0, y: -100 }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-10 mt-10">
-                    <h2 className="text-3xl lg:text-5xl mt-20 mb-10 tracking-tighter bg-gradient-to-t  from-neutral-00 via-neutral-300 to-neutral-400 bg-clip-text text-transparent">
+                    className="text-center">
+                    <h2 className="text-3xl lg:text-5xl mt-30  tracking-tighter bg-gradient-to-t  from-neutral-00 via-neutral-300 to-neutral-400 bg-clip-text text-transparent">
                         Hackathon Events
                     </h2>
                 </motion.div>

@@ -2,11 +2,8 @@
 import Link from 'next/link';
 import { useState, useContext } from 'react'
 import { Menu, X } from 'lucide-react';
-// import logo from "../assets/logo.png"
-// import { RiCloseFill, RiMenu3Line } from '@remixicon/react'
-import { MdDarkMode } from "react-icons/md";
-import { MdLightMode } from "react-icons/md";
-// import ThemeContext from '../context/theme';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 export default function Navbar() {
     const [open, setOpen] = useState(false)
@@ -26,13 +23,13 @@ export default function Navbar() {
                 </Link>
                 {/* hidden on mobile */}
                 <div className="hidden md:flex space-x-6">
-                    <Link href="/" className='hover:text-neutral-200'>
+                    <Link href="/" className='text-neutral-200 hover:text-green-400'>
                         Home
                     </Link>
-                    <Link href="/hackathon" className='hover:text-neutral-200'>
+                    <Link href="/hackathon" className='text-neutral-200 hover:text-green-400'>
                         Hackathon
                     </Link>
-                    <Link href="/leaderboard" className='hover:text-neutral-200'>
+                    <Link href="/leaderboard" className='text-neutral-200 hover:text-green-400'>
                         Leaderboard
                     </Link>
                 </div>
@@ -41,28 +38,18 @@ export default function Navbar() {
                     <Link href="/user/auth/login" className="border border-neutral-700 text-white py-2 px-4 rounded-lg hover:bg-neutral-700 transition">
                         login
                     </Link>
-                    <button className='text-2xl border-l border-neutral-400 px-4'>
-                        <MdLightMode className='text-neutral-200' />
-                        {/* {mode ?
-                            <>
-                                <MdLightMode className='text-neutral-200' />
-                            </> :
-                            <>
-                                <MdDarkMode className='text-neutral-900' />
-                            </>} */}
-                    </button>
+                    <Avatar>
+                        <AvatarImage src="/avatar.svg" />
+                        <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
                 </div>
                 {/* Hambugar Icon for Mobile */}
                 <div className="md:hidden">
                     <button className='text-2xl border-r border-neutral-400 mr-2 px-2'>
-                        <MdLightMode className='text-neutral-200' />
-                        {/* {mode ?
-                            <>
-                                <MdLightMode className='text-neutral-200' />
-                            </> :
-                            <>
-                                <MdDarkMode className='text-neutral-900' />
-                            </>} */}
+                        <Avatar >
+                            <AvatarImage src="/avatar.svg" />
+                            <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
                     </button>
                     <button onClick={toggleMenu} className='text-white focus:outline-none' aria-label={open ? "Close Menu" : "Open Menu"}>
                         {open ? <X /> : <Menu />}
@@ -72,26 +59,22 @@ export default function Navbar() {
             {/* mobile menu */}
             {open && (
                 <div className="md:hidden bg-neutral-900/60 backdrop-blur-md border border-neutral-800 p-4 rounded-xl mt-2">
-                    <div className="flex flex-col space-y-4">
-                        <a href="#" className='hover:text-neutral-200'>
+                    <div className="flex flex-col space-y-4 text-[14px]">
+                        <Link href="/" className='text-neutral-200 hover:text-green-400'>
                             Home
-                        </a>
-                        <a href="#" className='hover:text-neutral-200'>
+                        </Link>
+                        <Link href="/hackathon" className='text-neutral-200 hover:text-green-400'>
                             Hackathon
-                        </a>
-                        <a href="#" className='hover:text-neutral-200'>
+                        </Link>
+                        <Link href="/leaderboard" className='text-neutral-200 hover:text-green-400'>
+                            Leaderboard
+                        </Link>
+                        <Link href="/team" className='text-neutral-200 hover:text-green-400'>
                             Team
-                        </a>
-                        <a href="#" className='hover:text-white
-                        '>
+                        </Link>
+                        <Link href="/user/auth/login" className="border border-neutral-700 text-white py-2 px-4 rounded-lg hover:bg-neutral-500/10 transition text-center hover:text-green-400">
                             Login
-                        </a>
-                        <a href="#" className="border border-neutral-700 text-white py-2 px-4 rounded-lg hover:bg-neutral-700 transition text-center">
-                            Login
-                        </a>
-                        <a href="#" className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition text-center">
-                            Start Free Trial
-                        </a>
+                        </Link>
                     </div>
                 </div>
             )}

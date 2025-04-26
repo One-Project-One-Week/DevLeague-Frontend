@@ -1,11 +1,14 @@
 'use client'
 import Link from "next/link"
+import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { motion } from 'framer-motion'
 import { Users } from "lucide-react"
-
+import WinnerCard from "@/components/winner-card"
 
 export default function HackathonDetail() {
+    const [show, setShow] = useState(true)
+
     const stepVarients = {
         hidden: { opacity: 0, y: 50 },
         visible: (i) => ({
@@ -40,10 +43,13 @@ export default function HackathonDetail() {
                             <Badge variant="outline" className="text-sm text-neutral-300 border border-green-400">Upcoming</Badge>
                         </div>
                         <div
-                            className="">
+                            className="relative">
                             <img src="/img1.jpg" alt="img1" className='rounded-lg w-full h-64 object-cover' />
+                            <div className="absolute -bottom-6 left-3">
+                                <img src="/avatar.svg" alt="" width={60} />
+                            </div>
                         </div>
-                        <div className="flex flex-col justify-center mt-5 gap-3">
+                        <div className="flex flex-col justify-center mt-10 gap-3">
                             <h3 className="text-xl text-neutral-300 font-semibold mb-4">Hackthon Title</h3>
 
                             <div className="flex gap-3">
@@ -80,7 +86,6 @@ export default function HackathonDetail() {
                                     </li>
                                 </ul>
                             </div>
-
                             <Badge variant="outline" className="text-sm text-neutral-300 border border-green-400">Rules</Badge>
                             <div className="flex flex-row items-center gap-5 border border-gray-500/20 p-4 rounded-lg">
                                 <ul className="text-sm text-neutral-300">
@@ -91,7 +96,12 @@ export default function HackathonDetail() {
                                     <li>Some Rules</li>
                                 </ul>
                             </div>
-
+                            {show && (
+                                <>
+                                    <WinnerCard />
+                                </>
+                            )
+                            }
                         </div>
                     </motion.div>
                 </motion.div>
