@@ -9,9 +9,9 @@ import {
 
 export default function UserLogin() {
     return (
-        <div className="w-full max-w-sm md:max-w-3xl ">
+        <div className="w-full md:max-w-3xl">
             <Card className="overflow-hidden p-0 shadow-2xl bg-neutral-500/30 border-none" >
-                <CardContent className="grid p-0 md:grid-cols-2">
+                <CardContent className="grid">
                     <form className="p-6 md:p-8">
                         <div className="flex flex-col gap-6">
                             <div className="flex flex-col items-center text-center">
@@ -47,12 +47,6 @@ export default function UserLogin() {
                             </div>
                         </div>
                     </form>
-                    <div className="bg-muted relative hidden md:block">
-                        <img
-                            src="/vercel.svg"
-                            alt="Image"
-                            className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale" />
-                    </div>
                 </CardContent>
             </Card>
         </div>

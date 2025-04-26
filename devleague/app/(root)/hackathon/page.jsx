@@ -46,7 +46,7 @@ export default function HackathonPage() {
     visible: { opacity: 1, transition: { duration: 0.5 } },
   };
   return (
-    <section className="">
+    <section className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 flex flex-col">
         <motion.div
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,6 @@ export default function HackathonPage() {
             {hackathons.map((hackathon, index) => {
               return (
                 <motion.div
-<<<<<<< HEAD
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -134,15 +133,6 @@ export default function HackathonPage() {
                       View Details
                     </Link>
                   </div>
-=======
-                    whileInView={{ opacity: 1, y: 0 }}
-                    initial={{ opacity: 0, y: -100 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center">
-                    <h2 className="text-3xl lg:text-5xl mt-30  tracking-tighter bg-gradient-to-t  from-neutral-00 via-neutral-300 to-neutral-400 bg-clip-text text-transparent">
-                        Hackathon Events
-                    </h2>
->>>>>>> user
                 </motion.div>
               );
             })}
