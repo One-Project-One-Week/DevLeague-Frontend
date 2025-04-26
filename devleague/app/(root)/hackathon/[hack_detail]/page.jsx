@@ -161,7 +161,11 @@ export default function HackathonDetail() {
                                   selectedMemberIds: selectedMemberIds,
                                 })
                                 .then((response) => {
-                                  console.log('Registration successful', response);
+                                  console.log(
+                                    'Registration successful',
+                                    response
+                                  );
+                                  setRegistered(true);
                                   // You can add success notification here
                                 })
                                 .catch((error) => {
