@@ -116,6 +116,7 @@ export default function HackathonPage() {
                     ) : (
                       ''
                     )}
+                    ```
                     <div className="flex flex-row items-center mb-4">
                       <p className="text-neutral-400  text-[14px]">Points</p>
                       <Badge
