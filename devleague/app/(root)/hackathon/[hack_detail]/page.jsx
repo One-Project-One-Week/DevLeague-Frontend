@@ -5,6 +5,12 @@ import { Badge } from "@/components/ui/badge"
 import { motion } from 'framer-motion'
 import { Users } from "lucide-react"
 import WinnerCard from "@/components/winner-card"
+import { Button } from "@/components/ui/button"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
 
 export default function HackathonDetail() {
     const [show, setShow] = useState(true)
@@ -50,8 +56,49 @@ export default function HackathonDetail() {
                             </div>
                         </div>
                         <div className="flex flex-col justify-center mt-10 gap-3">
-                            <h3 className="text-xl text-neutral-300 font-semibold mb-4">Hackthon Title</h3>
+                            <div className="flex flex-row justify-between items-center">
+                                <h3 className="text-xl text-neutral-300 font-semibold mb-4">Hackthon Title</h3>
+                                <div className="flex flex-row justify-center items-center gap-3">
+                                    <Popover>
+                                        <PopoverTrigger className="bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1">Project Submit</PopoverTrigger>
+                                        <PopoverContent className="bg-neutral-600/70 flex flex-col border-none gap-5">
+                                            <form className="gap-3 flex flex-col   text-neutral-300" action="">
+                                                <input
+                                                    className="p-2 border border-gray-500 rounded-sm"
+                                                    type="url" name="" placeholder="enter your repo link" />
+                                                <button type="submit" className=" bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1">Submit</button>
+                                            </form>
+                                        </PopoverContent>
+                                    </Popover>
+                                    {/*  */}
+                                    <Popover>
+                                        <PopoverTrigger className="bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1">Register</PopoverTrigger>
+                                        <PopoverContent className="bg-neutral-600/70 flex flex-col border-none gap-5">
+                                            <form className="flex flex-col gap-3">
+                                                <div className="flex flex-row items-center justify-between text-neutral-300">
+                                                    <div className="flex flex-row gap-3">
+                                                        <input type="checkbox" name="" id="" />
+                                                        <img src="/avatar.svg" alt="" width={40} />
+                                                    </div>
+                                                    <span>Alex</span>
+                                                    <span>100</span>
+                                                </div>
+                                                <div className="flex flex-row items-center justify-between text-neutral-300">
+                                                    <div className="flex flex-row gap-3">
+                                                        <input type="checkbox" name="" id="" />
+                                                        <img src="/avatar.svg" alt="" width={40} />
+                                                    </div>
+                                                    <span>Alex</span>
+                                                    <span>100</span>
+                                                </div>
+                                                <button type="submit" className=" bg-green-500/80 hover:bg-green-500 text-neutral-300 rounded-md px-3 py-1">Submit</button>
+                                            </form>
 
+                                        </PopoverContent>
+                                    </Popover>
+                                </div>
+
+                            </div>
                             <div className="flex gap-3">
                                 <Users className="text-green-400" />
                                 <span className="text-neutral-300">100</span>
