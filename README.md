@@ -1,13 +1,8 @@
 # 🚀 DevLeague
 
-A beautiful and animated profile dashboard for developers to track their hackathon journey — ongoing, upcoming, and completed events with ranks, team details, and date-times.
-
----
-
-## 📸 Preview
-
-> [Insert a screenshot or gif here if you have one]
-
+A place for developers to create or join a hackathon team, and compete and collect rewards. 
+A bridge between business, educational, technological sectors and juniors.
+A platform for developers, made by developers.
 ---
 
 ## 📋 Table of Contents
@@ -28,7 +23,7 @@ A beautiful and animated profile dashboard for developers to track their hackath
 ## 🧠 About DevLeague
 
 **DevLeague** is designed for developers, hackathon participants, and tech enthusiasts to showcase and keep track of their hackathon participation records.  
-It provides a clean, responsive interface with cool animations, hackathon status tracking, ranks, and team details.
+It provides a clean, responsive interface, hackathon status tracking, ranks, and team details. Apart from other platforms, we integrade point distribution system, so that everyone can have fun coding while flexing points. :):):)
 
 ---
 
@@ -46,16 +41,18 @@ It provides a clean, responsive interface with cool animations, hackathon status
 ## 🛠️ Tech Stack
 
 - FrontEnd
-- [Next.js 14](https://nextjs.org/) (App Router)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Next.js 14](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.npmjs.com/package/framer-motion)
 
 - BackEnd
 - [Node.js (TypeScript)](https://nodejs.org/en/)
-- [nodemon](https://www.npmjs.com/package/nodemon) / [tsx](https://www.npmjs.com/package/tsx)
 - [Express](https://expressjs.com/)
 - [PostgreSQL](https://www.postgresql.org/) 
   - [Prisma ORM](https://www.prisma.io/) (for PostgreSQL)
+- [multer](https://www.npmjs.com/package/multer)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [JWT](https://jwt.io/)
 
 
 ---
